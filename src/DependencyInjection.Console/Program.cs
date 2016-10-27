@@ -21,7 +21,8 @@ namespace DependencyInjection.Console
             };
             optionSet.Parse(args);
 
-            var characterWriter = useColors ? (ICharacterWriter) new ColorWriter(new AsciiWriter()) : new AsciiWriter();
+            var asciiWriter = new AsciiWriter();
+            var characterWriter = useColors ? (ICharacterWriter) new ColorWriter(asciiWriter) : asciiWriter;
             var patternWriter = new PatternWriter(characterWriter);
             var patternGenerator = new PatternGenerator();
             var app = new PatternApp(patternWriter, patternGenerator);
