@@ -5,10 +5,10 @@
         private readonly PatternWriter _patternWriter;
         private readonly PatternGenerator _patternGenerator;
 
-        public PatternApp(bool useColours, PatternWriter patternWriter)
+        public PatternApp(bool useColours, PatternWriter patternWriter, PatternGenerator patternGenerator)
         {
             _patternWriter = patternWriter;
-            _patternGenerator = new PatternGenerator();
+            _patternGenerator = patternGenerator;
         }
 
         public void Run(int width, int height)

@@ -21,7 +21,8 @@ namespace DependencyInjection.Console
             optionSet.Parse(args);
 
             var patternWriter = new PatternWriter(useColors);
-            var app = new PatternApp(useColors, patternWriter);
+            var patternGenerator = new PatternGenerator();
+            var app = new PatternApp(useColors, patternWriter, patternGenerator);
             app.Run(width, height);
         }
     }
