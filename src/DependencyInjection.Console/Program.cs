@@ -22,7 +22,7 @@ namespace DependencyInjection.Console
             optionSet.Parse(args);
 
             var characterWriter = useColors ? (ICharacterWriter) new ColorWriter(new AsciiWriter()) : new AsciiWriter();
-            var patternWriter = new PatternWriter(useColors, characterWriter);
+            var patternWriter = new PatternWriter(characterWriter);
             var patternGenerator = new PatternGenerator();
             var app = new PatternApp(patternWriter, patternGenerator);
             app.Run(width, height);
