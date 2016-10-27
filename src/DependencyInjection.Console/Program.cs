@@ -34,20 +34,17 @@ namespace DependencyInjection.Console
 
         private static ISquarePainter CreatePainter(string pattern)
         {
-            var circleSquarePainter = new CircleSquarePainter();
-            var oddEvenSquarePainter = new OddEvenSquarePainter();
-            var whiteSquarePainter = new WhiteSquarePainter();
             ISquarePainter chosenPainter;
             switch (pattern)
             {
                 case "circle":
-                    chosenPainter = circleSquarePainter;
+                    chosenPainter = new CircleSquarePainter();
                     break;
                 case "oddeven":
-                    chosenPainter = oddEvenSquarePainter;
+                    chosenPainter = new OddEvenSquarePainter();
                     break;
                 case "whitesquare":
-                    chosenPainter = whiteSquarePainter;
+                    chosenPainter = new WhiteSquarePainter();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException("pattern");
