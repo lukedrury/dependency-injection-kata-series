@@ -22,7 +22,7 @@ namespace DependencyInjection.Console
 
             var patternWriter = new PatternWriter(useColors);
             var patternGenerator = new PatternGenerator();
-            var app = new PatternApp(useColors, patternWriter, patternGenerator);
+            var app = new PatternApp(patternWriter, patternGenerator);
             app.Run(width, height);
         }
     }
