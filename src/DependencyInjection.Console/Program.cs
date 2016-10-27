@@ -1,4 +1,5 @@
-﻿using DependencyInjection.Console.CharacterWriters;
+﻿using System;
+using DependencyInjection.Console.CharacterWriters;
 using DependencyInjection.Console.SquarePainters;
 using NDesk.Options;
 
@@ -28,7 +29,21 @@ namespace DependencyInjection.Console
             var circleSquarePainter = new CircleSquarePainter();
             var oddEvenSquarePainter = new OddEvenSquarePainter();
             var whiteSquarePainter = new WhiteSquarePainter();
-            var chosenPainter = circleSquarePainter;
+            ISquarePainter chosenPainter;
+            switch (pattern)
+            {
+                case "circle":
+                    chosenPainter = circleSquarePainter;
+                    break;
+                case "oddeven":
+                    chosenPainter = oddEvenSquarePainter;
+                    break;
+                case "whitesquare":
+                    chosenPainter = whiteSquarePainter;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException("pattern");
+            }
             var patternGenerator = new PatternGenerator(chosenPainter);
             var app = new PatternApp(patternWriter, patternGenerator);
             app.Run(width, height);
