@@ -28,7 +28,8 @@ namespace DependencyInjection.Console
             var circleSquarePainter = new CircleSquarePainter();
             var oddEvenSquarePainter = new OddEvenSquarePainter();
             var whiteSquarePainter = new WhiteSquarePainter();
-            var patternGenerator = new PatternGenerator(circleSquarePainter);
+            var chosenPainter = circleSquarePainter;
+            var patternGenerator = new PatternGenerator(chosenPainter);
             var app = new PatternApp(patternWriter, patternGenerator);
             app.Run(width, height);
         }
