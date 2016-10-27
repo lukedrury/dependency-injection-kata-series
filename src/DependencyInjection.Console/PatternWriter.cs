@@ -7,9 +7,9 @@ namespace DependencyInjection.Console
     {
         private readonly ICharacterWriter _characterWriter;
 
-        public PatternWriter(bool useColours)
+        public PatternWriter(bool useColours, ICharacterWriter characterWriter)
         {
-            _characterWriter = useColours ? (ICharacterWriter) new ColorWriter(new AsciiWriter()) : new AsciiWriter();
+            _characterWriter = characterWriter;
         }
 
         public void Write(Pattern pattern)

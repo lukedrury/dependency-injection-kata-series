@@ -1,4 +1,5 @@
-﻿using NDesk.Options;
+﻿using DependencyInjection.Console.CharacterWriters;
+using NDesk.Options;
 
 namespace DependencyInjection.Console
 {
@@ -20,7 +21,8 @@ namespace DependencyInjection.Console
             };
             optionSet.Parse(args);
 
-            var patternWriter = new PatternWriter(useColors);
+            var characterWriter = useColors ? (ICharacterWriter) new ColorWriter(new AsciiWriter()) : new AsciiWriter();
+            var patternWriter = new PatternWriter(useColors, characterWriter);
             var patternGenerator = new PatternGenerator();
             var app = new PatternApp(patternWriter, patternGenerator);
             app.Run(width, height);
