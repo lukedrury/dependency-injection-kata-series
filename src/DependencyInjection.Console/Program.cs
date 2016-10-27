@@ -26,6 +26,8 @@ namespace DependencyInjection.Console
             var characterWriter = useColors ? (ICharacterWriter) new ColorWriter(asciiWriter) : asciiWriter;
             var patternWriter = new PatternWriter(characterWriter);
             var circleSquarePainter = new CircleSquarePainter();
+            var oddEvenSquarePainter = new OddEvenSquarePainter();
+            var whiteSquarePainter = new WhiteSquarePainter();
             var patternGenerator = new PatternGenerator(circleSquarePainter);
             var app = new PatternApp(patternWriter, patternGenerator);
             app.Run(width, height);
