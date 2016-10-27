@@ -26,6 +26,14 @@ namespace DependencyInjection.Console
             var asciiWriter = new AsciiWriter();
             var characterWriter = useColors ? (ICharacterWriter) new ColorWriter(asciiWriter) : asciiWriter;
             var patternWriter = new PatternWriter(characterWriter);
+            var chosenPainter = CreatePainter(pattern);
+            var patternGenerator = new PatternGenerator(chosenPainter);
+            var app = new PatternApp(patternWriter, patternGenerator);
+            app.Run(width, height);
+        }
+
+        private static ISquarePainter CreatePainter(string pattern)
+        {
             var circleSquarePainter = new CircleSquarePainter();
             var oddEvenSquarePainter = new OddEvenSquarePainter();
             var whiteSquarePainter = new WhiteSquarePainter();
@@ -44,9 +52,7 @@ namespace DependencyInjection.Console
                 default:
                     throw new ArgumentOutOfRangeException("pattern");
             }
-            var patternGenerator = new PatternGenerator(chosenPainter);
-            var app = new PatternApp(patternWriter, patternGenerator);
-            app.Run(width, height);
+            return chosenPainter;
         }
     }
 }
