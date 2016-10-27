@@ -7,9 +7,9 @@ namespace DependencyInjection.Console
     {
         private readonly ISquarePainter _squarePainter;
 
-        public PatternGenerator()
+        public PatternGenerator(ISquarePainter painter)
         {
-            _squarePainter = new CircleSquarePainter();
+            _squarePainter = painter;
         }
 
         public Pattern Generate(int width, int height)
