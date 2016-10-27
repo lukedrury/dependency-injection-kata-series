@@ -20,7 +20,8 @@ namespace DependencyInjection.Console
             };
             optionSet.Parse(args);
 
-            var app = new PatternApp(useColors);
+            var patternWriter = new PatternWriter(useColors);
+            var app = new PatternApp(useColors, patternWriter);
             app.Run(width, height);
         }
     }
